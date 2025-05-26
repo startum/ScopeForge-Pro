@@ -1,97 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ScopeForge Pro</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Arial', sans-serif;
+      margin: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+      color: #111;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: #eee;
+    }
+
+    .hero {
       text-align: center;
-      padding: 2rem;
-      max-width: 700px;
+      padding: 4rem 2rem 2rem;
+      max-width: 900px;
       margin: auto;
     }
-    h1 {
-      font-size: 2.8rem;
-      margin: 1rem 0 0.5rem;
-    }
-    p.tagline {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #333;
-    }
-    a.cta {
-      background: black;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      font-size: 1rem;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 20px;
-    }
-    .footer-links {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-    }
-    .footer-links a {
-      margin: 0 10px;
-      color: #000;
-      text-decoration: underline;
-    }
-    img.logo {
-      width: 100px;
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
       margin-bottom: 1rem;
     }
-  </style>
+
+    .hero p.subhead {
+      font-size: 1.25rem;
+      color: #444;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero .cta-button {
+      font-size: 1rem;
+      background: #000;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, background 0.2s ease;
+      display: inline-block;
+    }
+
+    .hero .cta-button:hover {
+      background: #222;
+      transform: translateY(-2px);
+    }
+
+    .benefits {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .benefit-item {
+      font-size: 1.05rem;
+      background: #f0f0f0;
+      padding: 12px 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .nav-links a {
+        margin-left: 1rem;
+      }
+    }
+  
+    .pricing-section {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #f8f8f8;
+      padding: 1.5rem;
+      border-radius: 12px;
+      width: 250px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card.pro {
+      border: 2px solid #000;
+    }
+
+    .testimonials-section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .testimonial {
+      background: #f2f2f2;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 0.75rem;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    </style>
 </head>
 <body>
-  <img src="Bleu Noir Graffiti Logo (3).jpg" alt="ScopeForge Logo" class="logo" />
-  <p class="tagline">Auto-generate scopes that make sense</p>
-  <h1>ScopeForge</h1>
+  <header>
+    <div class="logo" style="font-weight: bold; font-size: 1.1rem;">ScopeForge</div>
+    <nav class="nav-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+  </header>
 
-  <p>ScopeForge is a lightweight Chrome extension that turns messy, vague client briefs into clear, professional scopes of work — in seconds.</p>
+  <section class="hero">
+    <h1>Turn Briefs into Clear Scopes</h1>
+    <p class="subhead">ScopeForge is a Chrome extension that auto-generates structured scopes of work from vague client briefs — with follow-up questions when details are missing.</p>
+    <a class="cta-button" href="https://chrome.google.com/webstore/detail/scopeforge/your-extension-id" target="_blank">Get ScopeForge Now</a>
 
-  <a class="cta" href="https://chrome.google.com/webstore/detail/scopeforge/your-extension-id" target="_blank">Install the Extension</a>
+    <div class="benefits">
+      <div class="benefit-item">✅ Clean, client-ready scope based on their original brief</div>
+      <div class="benefit-item">✅ Smart follow-up questions when details are missing</div>
+      <div class="benefit-item">✅ Works in Chrome — no logins, no setup</div>
+    </div>
+  
+    <div class="pricing-section">
+      <h2 style="margin-top: 4rem;">Pricing</h2>
+      <div class="pricing-cards">
+        <div class="card">
+          <h3>Free</h3>
+          <p>3 scopes per month</p>
+          <p>Basic features</p>
+          <p><strong>$0/month</strong></p>
+        </div>
+        <div class="card pro">
+          <h3>Pro</h3>
+          <p>Unlimited scopes</p>
+          <p>Follow-up questions</p>
+          <p><strong>$9.99/month</strong></p>
+        </div>
+      </div>
+    </div>
 
-  <h2>Who It’s For</h2>
-  <ul>
-    <li>Freelancers who waste time rewriting unclear client requests</li>
-    <li>Agencies that want faster turnaround on project documentation</li>
-    <li>Anyone tired of staring at a blank “Scope of Work” doc</li>
-  </ul>
-
-  <h2>What You Get</h2>
-  <ul>
-    <li>🔹 Clean, client-ready scope based on their original brief</li>
-    <li>🔹 Smart follow-up questions when details are missing</li>
-    <li>🔹 Works in Chrome — no logins, no setup</li>
-    <li>🔹 3 free uses per month</li>
-    <li>🔓 Unlock unlimited with ScopeForge Pro</li>
-  </ul>
-
-  <h2>How It Works</h2>
-  <ol>
-    <li>Install the extension in Chrome</li>
-    <li>Paste your client’s brief</li>
-    <li>Click “Generate” — done</li>
-  </ol>
-
-  <h2>Pricing</h2>
-  <ul>
-    <li><strong>Free:</strong> 3 scope generations per month</li>
-    <li><strong>Pro:</strong> Unlimited scopes + follow-up questions — $9.99/mo</li>
-  </ul>
-
-  <a class="cta" href="https://chrome.google.com/webstore/detail/scopeforge/your-extension-id" target="_blank">Get ScopeForge Now</a>
-
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="changelog.html">Changelog</a>
-    <a href="mailto:you@example.com">Contact</a>
-  </div>
+    <div class="testimonials-section">
+      <h2 style="margin-top: 4rem;">What People Are Saying</h2>
+      <div class="testimonial">
+        <p>“ScopeForge saved me hours on every new project. No more rewriting vague client messages.”</p>
+        <span>— Alex P., Freelance Web Developer</span>
+      </div>
+      <div class="testimonial">
+        <p>“Honestly brilliant. I get a solid first draft SOW in seconds. Game-changer for my workflow.”</p>
+        <span>— Jamie L., Creative Strategist</span>
+      </div>
+      <div class="testimonial">
+        <p>“Clean, fast, and surprisingly smart at picking up on missing details.”</p>
+        <span>— Dana T., Agency PM</span>
+      </div>
+    </div>
+    </section>
+    
 </body>
-
 </html>
